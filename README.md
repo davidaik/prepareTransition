@@ -1,5 +1,13 @@
 # prepareTransition jQuery Plugin
 
+## This fork contains these changes
+
+`prepareTransition()` now takes an object as a paremeter instead of a CSS property.
+
+    var options = { property: 'my-css-property', callback: function(){} }
+    prepareTransition(options);
+
+
 The prepareTransition plugin sets display and visibility to override any existing
 display and visibility properties. This ensures that the element can still animate
 without issue. For users who don't have support for CSS transitions, then the 

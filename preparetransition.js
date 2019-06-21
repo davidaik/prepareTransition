@@ -81,7 +81,10 @@
 /**
  * @param property {string} optional - If passed transition end events will only look for events with this property type. This is useful when avoiding multiple transition events on the same element or it's children.
  */
-$.fn.prepareTransition = function( property ){
+$.fn.prepareTransition = function( options ){
+    var property = options.property;
+    var callback = options.callback;
+
     var hasTrans = supportsTransitions();
 
     if(property === "transform") property = getTransformName().css;
@@ -107,6 +110,7 @@ $.fn.prepareTransition = function( property ){
 
                     // Need to add MS events as well?
                     $(this).off('TransitionEnd webkitTransitionEnd transitionend oTransitionEnd');
+                    if(callback) callback();
                 }
             });
         } else {
